@@ -1,0 +1,387 @@
+@font-face {
+  font-family: sureme;
+  src: url(sureme-font/Sureme-Sans-BF68bfec3e9a342.otf);
+}
+
+* {
+   font-family: sureme;
+}
+
+@font-face {
+  font-family: robotoserif;
+  src: url(Roboto_Serif/static);
+}
+
+* {
+   font-family: sureme;
+}
+
+
+body{
+    background-color: rgba(188, 156, 137, 1);
+    padding: 20px;
+    margin: 30px;
+}
+
+
+.nav {
+  position: relative;
+  overflow: hidden;
+  font-family: sureme;
+}
+
+.nav a {
+  color: #523209;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 28px;
+  font-family: sureme;
+}
+
+#logo{
+  width: 300px;
+}
+
+
+.nav a.active {
+  color: white;
+}
+
+.nav-centered a {
+  float: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.nav-right {
+  float: right;
+}
+
+.nav a:hover{
+  color: white;
+}
+
+
+
+
+.text{
+  font-size: 75px;
+  color: white;
+  margin-left: 30px;
+  margin-bottom: 118px;
+
+}
+
+.imagetext {
+  position: sticky;
+  margin: 30px;
+  height:6000px;
+}
+
+h1{
+  font-size: 120px;
+   position: sticky;
+   z-index: 1;
+   mix-blend-mode: difference;
+    top: 110px;
+    color: rgb(255, 225, 0);
+
+}
+
+.images{
+  display: block;
+  width: 80%;
+  text-align: right;
+}
+
+img{
+  width: 100px;
+      cursor: move;
+      margin-bottom: 30px;
+}
+
+
+.images-img1{
+  width: 600px;
+}
+
+.images-img2{
+  width: 300px;
+}
+
+.images-img3{
+  text-align: right;
+  width: 350px;
+}
+
+.images-img4{
+  text-align: right;
+  width: 400px;
+}
+
+
+.gray{
+    display: flex;
+    flex-wrap: wrap-reverse;
+    flex-direction: row-reverse;
+
+
+}
+
+.gray-text{
+  width: 400px;
+  padding: 30px;
+}
+
+.images-img5{
+  width: 500px;
+}
+
+.bottom{
+  display: flex;
+  flex-wrap: wrap;
+  background-color: white;
+  border-radius: 12px;
+  width: 100%;
+  padding: 18px;
+  gap: 50px;
+  align-items: center;
+  font-size: 20px;
+}
+
+.bottom-logo{
+   text-align: center;
+   width: 400px;
+}
+
+.header{
+  width: 100%;
+  text-align: center;
+  align-items: center;
+
+}
+
+
+input{
+    font-family: robotoserif;
+  font-style:light;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 50px;
+  border: solid #523209;;
+}
+
+.bottom-button{
+    font-family: robotoserif;
+    font-style: light;
+    padding: 12px;
+      font-size: 16px;
+      border-radius: 80px;
+      border: #523209 solid 2px;
+
+
+}
+
+
+
+.subscribe{
+  float: left;
+}
+
+.images-img6{
+  width: 400px;
+}
+
+.images-img7{
+  width: 500px;
+}
+
+.subscribe-p{
+  font-family: robotoserif;
+}
+
+.describe{
+  font-size: 25px;
+}
+
+
+
+.navigate{
+  margin: 20px;
+  font-size: 16px;
+  width: calc(100%/3);
+}
+
+
+.bottom-nav{
+  width: calc(100%/4);
+  align-items:flex-end;
+}
+
+.bottom-support{
+  width: calc(100%/3);
+}
+
+.bottom-button-buy{
+  padding: 50px;
+  font-size: 38px;
+  border-radius: 100px;
+background-color: rgb(255, 225, 0);
+color: #523209;
+border: #523209 solid 4px;
+}
+
+ 
+
+
+.last{
+  margin: 100px;
+  align-items: center;  
+  text-align: center;
+}
+
+
+
+
+
+
+
+
+
+/*
+  .images--drag-host + .dragpanel — added when JS initializes draggable gallery
+  • JS adds .images--drag-host to .images: position:relative + min-height holds absolutely positioned panels.
+  • z-index here pairs with --headline-z on h1 (see .imagetext block above).
+  • Hide direct-child <br> tags so empty line breaks do not stretch the host after images become absolute.
+*/
+.images--drag-host {
+  position: relative;
+  min-height: 7200px;
+  z-index: var(--gallery-host-z);
+}
+
+.images--drag-host > br {
+  display: none;
+}
+
+/* Each wrapped memory image: moved with mousedown/mousemove in index.html (W3Schools-style). */
+.dragpanel {
+  position: absolute;
+  z-index: 9;
+  box-sizing: border-box;
+  cursor: move;
+  user-select: none;
+}
+
+/*
+  pointer-events:none on the inner <img>: sends events to the .dragpanel wrapper so
+  the browser’s default image-drag ghost does not fight our custom drag script.
+*/
+.dragpanel img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  pointer-events: none;
+  margin-bottom: 0;
+}
+
+img{
+  width: 100px;
+      cursor: default;
+      margin-bottom: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Responsive navigation menu (for mobile devices) */
+@media screen and (max-width: 600px) {
+  .nav a, .nav-right {
+    float: none;
+    display: block;
+  }
+  
+  .nav-centered a {
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+  }
+
+  .text{
+      font-size: 50px;
+  color: white;
+  margin: 20px;
+  margin-top: 40px;
+  }
+
+  #words{
+    font-size: 70px;
+    margin-left: -30px;
+    line-height: 100px;
+    letter-spacing: -6px;
+      font-family: sureme;
+  }
+
+.imagetext {
+  position: sticky;
+  margin: 10px;
+  min-height: 3700px;
+  .imagetext {
+  position: sticky;
+  margin: 30px;
+  height: 7700px;
+  --headline-z: 10;
+  --gallery-host-z: 1;
+}
+
+h1 {
+  font-size: 120px;
+  position: sticky;
+  z-index: var(--headline-z);
+  pointer-events: none;
+  mix-blend-mode: difference;
+  top: 110px;
+  color: rgb(255, 225, 0);
+}
+}
+
+.images-img1, .images-img2 {
+  width: 250px;
+}
+
+.images-img3, .images-img4{
+  width: 260px;
+}
+
+.images-img5, .images-img6{
+  width: 230px;
+}
+
+.images-img7{
+  width: 200px;
+}
+
+  
+.bottom-button-buy{
+  padding: 18px;
+  font-size: 28px;
+  border-radius: 80px;
+border: #523209 solid 3px;
+}
+ 
+}
+
+
+ 

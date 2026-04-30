@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    
+    <title>Memory(Re)Maker ECOMM</title>
+</head>
+<body>
+
+<div class="nav">
+
+  <!-- Centered link -->
+  <div class="nav-centered">
+    <a href="#home" class="active" ><img src="logo.png" alt="" id="logo"></a>
+  </div>
+  
+  <!-- Left-aligned links (default) -->
+  <a href="#news">ABOUT</a>
+  <a href="#contact">SHOP</a>
+  
+  <!-- Right-aligned links -->
+  <div class="nav-right">
+    <a href="#search">CART</a>
+    <a href="#about">MY ACCOUNT</a>
+  </div>
+  
+</div>
+
+<p class="text">Missing CHILDHOOD? <br>
+     Yearning for GRANDMA? <br>STRESSED?
+     <br>
+     <br>
+     Instead, feel</p>
+     <br><br>
+
+<div class="imagetext">
+    <h1 id="words">    UNIQUE EMOTIONS & RECOLLECTIONS OF YOUTH</h1>
+    <div class="images">
+        <img src="img1.png" alt="" draggable="true" class="images-img1" id="img1">
+        <br>
+         <img src="img2.png" alt="" class="images-img2" id="img2">
+         <br>
+         <img src="img3.png" alt="" class="images-img3" id="img3">
+         <br>
+            <div class="gray">
+              <img src="ecommtext.png" alt="" class="gray-text"> 
+               <img src="img4.png" alt="" class="images-img4" id="img4">
+               </div>
+          <img src="img5.png" alt="" class="images-img5" id="img5">
+          <img src="img6.png" alt="" class="images-img6" id="img6">
+         <br>
+        <img src="img7.png" alt="" class="images-img7" id="img7">
+          <br>
+
+   
+
+    </div>
+
+
+
+</div>
+
+      <p class="text" >Rediscover the feelings of sleeping over Grandma's. Recieve complimentary lunch, breakfast, and dinner, and experience unconditional love---all packed into a 48-hour, <i>transformative</i> stay. </p>
+
+    <div class="last">
+       <button class="bottom-button-buy" onclick="">(Re)BOOK NOW</button>
+    </div>
+
+
+
+  <div class="bottom">
+    <header class="header">
+     <img src="logo2.png" alt="" class="bottom-logo" >
+
+    </header>
+  <div class="button-input">
+    <input type="email" placeholder="Email Address" >
+      <button class="bottom-button">Subscribe</button>
+      <p>By signing up, you agree to our Privacy Policy*.</p>
+  </div>
+
+  <div class="bottom-support">
+    <p>SUPPORT <br> We’re here M-F 9am - 5pm EST. <br> Do Not Sell or Share My Personal Information <br> Cookie Preferences <br>
+      © Memory (Re)Maker </p>
+      
+  </div>
+
+  <div class="bottom-nav">   
+    <p>NAVIGATE<br> <br> About <br> Shop <br> My account <br>Cart </p>
+  </div>
+
+
+
+</div>
+
+
+
+
+     
+
+
+
+<script>
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  elmnt.onmousedown = dragMouseDown;
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    if (e.preventDefault) e.preventDefault();
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    if (e.preventDefault) e.preventDefault();
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+
+function initDraggableMemoryImages() {
+  var host = document.querySelector(".images");
+  if (!host || host.querySelector(".dragpanel")) return;
+
+  var imgs = [];
+  for (var i = 1; i <= 7; i++) {
+    var el = host.querySelector(".images-img" + i);
+    if (el) imgs.push(el);
+  }
+  if (!imgs.length) return;
+
+  host.classList.add("images--drag-host");
+
+  /* Wait until images have real dimensions: on DOMContentLoaded rects are often 0×0, so every panel stacks at (0,0). */
+  var crect = host.getBoundingClientRect();
+  var positions = imgs.map(function (img) {
+    var r = img.getBoundingClientRect();
+    return {
+      img: img,
+      top: r.top - crect.top + host.scrollTop,
+      left: r.left - crect.left + host.scrollLeft,
+      width: r.width
+    };
+  });
+
+  positions.forEach(function (p, idx) {
+    var id = "mem" + (idx + 1);
+    var wrap = document.createElement("div");
+    wrap.id = id;
+    wrap.className = "dragpanel";
+    wrap.appendChild(p.img);
+    /* Always hang panels under .images so top/left match getBoundingClientRect math (img4 was inside .gray before). */
+    host.appendChild(wrap);
+
+    wrap.style.top = Math.round(p.top) + "px";
+    wrap.style.left = Math.round(p.left) + "px";
+    wrap.style.width = Math.round(p.width) + "px";
+
+    dragElement(wrap);
+  });
+}
+
+function bootDraggableMemoryImages() {
+  if (document.readyState === "complete") {
+    window.requestAnimationFrame(function () {
+      initDraggableMemoryImages();
+    });
+  } else {
+    window.addEventListener("load", function () {
+      window.requestAnimationFrame(function () {
+        initDraggableMemoryImages();
+      });
+    });
+  }
+}
+bootDraggableMemoryImages();
+
+</script>
+
+
+
+ 
+    
+</body>
+</html>
